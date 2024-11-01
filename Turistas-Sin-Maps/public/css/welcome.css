@@ -1,0 +1,32 @@
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    background-color: #f0f0f0; /* Cambia el color de fondo si es necesario */
+}
+
+.hero-content {
+    max-width: 600px;
+    padding: 20px;
+}
+
+.hero-content h2 {
+    font-size: 2.5rem; /* Ajusta el tamaño de la letra */
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.hero-content h1 {
+    font-size: 1.8rem; /* Ajusta el tamaño de la letra */
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
