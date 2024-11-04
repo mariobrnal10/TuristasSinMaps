@@ -19,53 +19,19 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{route('rutaHome')}}">Home</a>
+                <a class="nav-link active" aria-current="page" href="{{route('rutaHome')}}">Servicios</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Hoteles</a>
+                <a class="nav-link" href="{{route('rutaSerUsuario')}}">Usuarios</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Vuelos</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{route('rutaCarrito')}}">Carrito De Reservacion</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Cancelacion De Reservación</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Perfil De Usuario </a>
+                <a class="nav-link" href="{{route('rutaTerminos')}}">Tarifas</a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
 
-    <div class="content">
-        @yield('contenidoHome')
-    </div>
-
-    <div class="content">
-        @yield('contenidoCarrito')
-    </div>
-    <div class="content">
-      @yield('contenidoUsuario')
-    </div>
-    <div class="content">
-      @yield('contenidoVuelos')
-    </div>
-    <div class="content">
-      @yield("busquedaVuelos")
-    </div>
-    <div class="content">
-      @yield("busquedaHoteles")
-    </div>
-    <div class="content">
-      @yield("compra")
-    </div>
-    <div class="content">
-      @yield("cancelar")
-    </div>
     <div class="content">
       @yield("serviciosAdmin")
     </div>
