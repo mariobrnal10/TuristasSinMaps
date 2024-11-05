@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\controladorForms;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ControladorVistas;
 
@@ -17,3 +18,5 @@ Route::get('/cancelacion', [ControladorVistas::class, 'cancelar'])->name('rutaCa
 Route::get('/serAdmin', [ControladorVistas::class, 'serviciosAdmin'])->name('rutaSerAdm');
 Route::get('/usuarioAdmin', [ControladorVistas::class, 'serviciosUsuario'])->name('rutaSerUsuario');
 Route::get('/tarifas', [ControladorVistas::class, 'tarifas'])->name('rutaTerminos');
+Route::post('/enviarRegistro', [controladorForms::class, 'Registro'])->name('rutaRegistrar');
+Route::post('/inicioSesion', [controladorForms::class, 'InicioSesion'])->name('rutaSesion');

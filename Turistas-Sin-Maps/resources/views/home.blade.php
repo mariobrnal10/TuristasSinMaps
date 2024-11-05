@@ -7,7 +7,21 @@
 @endsection
 
 @section('contenidoHome')
+
+@if(session('inicio'))
+    <script>
+        Swal.fire({
+            title: "Inicio de Sesión Correcto!",
+            text: "{{ session('inicio') }}",
+            icon: "success"
+        });
+    </script>
+@endif
+
+
+
 <section class="hero" style="background-image: url('{{ asset('img/home.jpg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat; width: 100vw; height: 100vh;">
+    
     <div class="container d-flex justify-content-center align-items-center h-100">
         <div class="row w-100 justify-content-around">
 

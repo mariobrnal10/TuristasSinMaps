@@ -7,19 +7,43 @@
 @endsection
 
 @section('contenidoLogin')
+
+
 <div class="login-container" style="background-image: url('{{ asset('img/INICIO.jpg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat; width: 100vw; height: 100vh;">
-    <form action="{{ route('rutaLogin') }}" method="POST">
+    @if(session('exito'))
+    <script>
+        Swal.fire({
+            title: "Registro exitoso!",
+            text: "{{ session('exito') }}",
+            icon: "success"
+        });
+    </script>
+@endif
+@session('inicio')
+    <script>
+        Swal.fire({
+            title: "Registro exitoso!",
+            text: "Que Tenga una Buena Experiencia!",
+            icon: "success"
+        });
+    </script>    
+    @endsession
+    <form action="/inicioSesion" method="POST">
         @csrf
         <h2>Iniciar Sesión</h2>
         <div class="form-group">
             <label for="email">Correo Electrónico</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email"  name="email" value="{{old('email')}}">
+            <small class="fst-italic text-danger">{{$errors->first('email')}}</small>
         </div>
         <div class="form-group">
             <label for="password">Contraseña</label>
-            <input type="password" id="password" name="password" required>
+            <input type="txt"  name="password" value="{{old('password')}}">
+            <small class="fst-italic text-danger">{{$errors->first('password')}}</small>
         </div>
-        <button type="submit" class="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Iniciar Sesión</button>
+        <button type="submit" class="btn btn-primary btn-sm px-4 py-2">
+            Iniciar Sesión
+        </button>        
     </form>
 </div>
 
