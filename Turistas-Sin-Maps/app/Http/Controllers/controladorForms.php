@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Validador;
 use App\Http\Requests\ValidadorLogin;
+use App\Http\Requests\ValidadorPerfil;
 use Illuminate\Http\Request;
 
 class controladorForms extends Controller
@@ -21,7 +22,11 @@ class controladorForms extends Controller
         return to_route('rutaHome'); 
     }
     
-    
+    public function Cambios(ValidadorPerfil $cambios){
+        $nombre = $cambios->input('nombre');
+        session()->flash('cambio' , 'Los Cambios Han Sido Guardados'.$nombre);
+        return to_route('rutaUsuario');
+    }
 
 }
 

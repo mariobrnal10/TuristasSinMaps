@@ -20,3 +20,4 @@ Route::get('/usuarioAdmin', [ControladorVistas::class, 'serviciosUsuario'])->nam
 Route::get('/tarifas', [ControladorVistas::class, 'tarifas'])->name('rutaTerminos');
 Route::post('/enviarRegistro', [controladorForms::class, 'Registro'])->name('rutaRegistrar');
 Route::post('/inicioSesion', [controladorForms::class, 'InicioSesion'])->name('rutaSesion');
+Route::post('/enviarCambios', [controladorForms::class, 'Cambios'])->name('rutaCambios');

@@ -11,7 +11,7 @@ class ValidadorPerfil extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,11 @@ class ValidadorPerfil extends FormRequest
     public function rules(): array
     {
         return [
-            //
+        'nombre' => 'required|min:5|max:255',
+        'apellido' => 'required|min:5|max:255',
+        'email' => 'required|email:rfc,dns',
+        'telefono' => 'required|numeric',
+        'contraseña' => 'required|min:8'
         ];
     }
 }
