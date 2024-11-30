@@ -6,7 +6,7 @@
 <<style>
 
     .terms-container {
-        background-color: #fff;
+        background-color: rgba(255, 255, 255, 0.8);
         border: 1px solid #ddd;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -16,7 +16,7 @@
     }
 </style>
 
-<div class="registro-container" style="background-image: url('{{ asset('img/cancelar.jpg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat; width: 100vw; height: 120vh;">
+<div class="registro-container" style="background-image: url('{{ asset('img/cancelacion.jpg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat; width: 100vw; height: 120vh;">
     <div class="container">
         @session('exito')
         <script>
