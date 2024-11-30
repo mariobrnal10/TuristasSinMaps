@@ -1,7 +1,7 @@
 @extends('layouts.plantilla_admin')
-@section('titulo', 'Servicios Usuario')
+@section('titulo', 'Administracion de hoteles')
 
-@section('serviciosUsuario')
+@section('AdminHoteles')
 
 <body>
     <style>
@@ -26,25 +26,21 @@
     <div class="usuario">
         <h2><center>Panel de administracion de servicios para usuarios de Turista sin Maps</center></h2>
         <div>
-            <h3>Usuarios Registrados</h3>
+            <h3>Hoteles Registrados</h3>
             <table class="table table-bordered">
                 <thead class="tehad-light">
                     <tr>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Correo</th>
-                        <th>Telefono</th>
-                        <th>Contraseña</th>
+                        <th>Nombre Hotel</th>
+                        <th>Ciudad</th>
+                        <th>Tarifa por noche</th>
                         <th>Actualizar</th>
                         <th>Eliminar</th>
                     </tr>
                     <tbody>
                         <tr>
-                            <td>12345678</td>
-                            <td>AeroMexico</td>
-                            <td>08:00pm a 09:00pm</td>
-                            <td>$4500</td>
-                            <td>Disponible</td>
+                            <td>AVVE IN</td>
+                            <td>Queretaro</td>
+                            <td>$1100</td>
                             <td><button type="button" class="btn btn-primary">Actualizar</button></td>
                             <td><button type="button" class="btn btn-danger">Eliminar</button></td>
                         </tr>

@@ -18,6 +18,9 @@ Route::get('/cancelacion', [ControladorVistas::class, 'cancelar'])->name('rutaCa
 Route::get('/serAdmin', [ControladorVistas::class, 'serviciosAdmin'])->name('rutaSerAdm');
 Route::get('/usuarioAdmin', [ControladorVistas::class, 'serviciosUsuario'])->name('rutaSerUsuario');
 Route::get('/tarifas', [ControladorVistas::class, 'tarifas'])->name('rutaTerminos');
+Route::get('/adminVuelos', [controladorVistas::class, 'admin_vuelos'])->name('AdministracionVuelos');
+Route::get('/adminHoteles', [controladorVistas::class, 'admin_hoteles'])->name('AdministracionHoteles');
+
 Route::post('/enviarRegistro', [controladorForms::class, 'Registro'])->name('rutaRegistrar');
 Route::post('/inicioSesion', [controladorForms::class, 'InicioSesion'])->name('rutaSesion');
 Route::post('/enviarCambios', [controladorForms::class, 'Cambios'])->name('rutaCambios');

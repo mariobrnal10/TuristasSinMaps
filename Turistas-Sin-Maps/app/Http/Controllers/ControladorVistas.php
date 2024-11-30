@@ -52,4 +52,10 @@ class ControladorVistas extends Controller
     public function tarifas(){
         return view('terminos');
     }
+    public function admin_vuelos(){
+        return view('admin_vuelos');
+    }
+    public function admin_hoteles(){
+        return view('admin_hoteles');
+    }
 }

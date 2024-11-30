@@ -27,6 +27,12 @@
               <li class="nav-item">
                 <a class="nav-link" href="{{route('rutaTerminos')}}">Tarifas</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{route('AdministracionVuelos')}}">Vuelos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{route('AdministracionHoteles')}}">Hoteles</a>
+              </li>
             </ul>
           </div>
         </div>
@@ -40,6 +46,12 @@
     </div>
     <div class="content">
       @yield("tarifas")
+    </div>
+    <div class="content">
+      @yield("AdminVuelos")
+    </div>
+    <div class="content">
+      @yield("AdminHoteles")
     </div>
     
 </body>
