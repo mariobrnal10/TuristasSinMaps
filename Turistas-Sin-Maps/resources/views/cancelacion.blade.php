@@ -21,8 +21,8 @@
         @session('exito')
         <script>
             Swal.fire({
-                title: "Cancelación exitosa!",
-                text: "Que Tenga una Buena Experiencia!",
+                title: "¡Cancelación exitosa!",
+                text: "¡Te vamos a extrañar!",
                 icon: "success"
             });
         </script>
