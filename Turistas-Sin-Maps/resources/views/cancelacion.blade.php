@@ -37,7 +37,7 @@
             </h2>
 
             <div class="text-center mb-3">
-                <img src="img/agregar.png" alt="Logo" class="img-fluid rounded-circle shadow" style="max-width: 80px;">
+                <img src="img/iconcacell.png" alt="Logo" class="img-fluid rounded-circle shadow" style="max-width: 80px;">
             </div>
             <div class="mb-4">
                 <h4 class="text-center text-dark font-weight-bold">{{ __('Detalles del vuelo') }}</h4>
