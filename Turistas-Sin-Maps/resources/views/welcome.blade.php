@@ -7,7 +7,7 @@
 @endsection
 
 @section('contenidoInicio')
-<section class="hero" style="background-image: url('{{ asset('img/INICIO.jpg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat; width: 100vw; height: 100vh;">
+<section class="hero" style="background-image: url('{{ asset('img/avion.jpg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat; width: 100vw; height: 100vh;">
     <div class="hero-content">
         <h2>VUELOS Y HOTELES</h2>
         <h1>Bienvenido a tu lugar seguro, disfruta con nosotros.</h1>
