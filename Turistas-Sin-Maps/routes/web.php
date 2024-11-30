@@ -28,4 +28,5 @@ Route::post('/enviarRegistro', [controladorForms::class, 'Registro'])->name('rut
 Route::post('/inicioSesion', [controladorForms::class, 'InicioSesion'])->name('rutaSesion');
 Route::post('/enviarCambios', [controladorForms::class, 'Cambios'])->name('rutaCambios');
 Route::get('/administradores/agregar', [controladorVistas::class, 'admin_nuevo'])->name('AdministracionAgregar');
+Route::get('/contacto', [controladorVistas::class, 'formContacto'])->name('rutaContacto');
 
