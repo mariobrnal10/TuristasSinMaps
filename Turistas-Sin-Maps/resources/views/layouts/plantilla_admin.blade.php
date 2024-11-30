@@ -33,6 +33,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="{{route('AdministracionHoteles')}}">Hoteles</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{route('Administracion')}}">Administradores</a>
+              </li>
             </ul>
           </div>
         </div>
@@ -52,6 +55,12 @@
     </div>
     <div class="content">
       @yield("AdminHoteles")
+    </div>
+    <div class="content">
+      @yield("AdminNuevo")
+    </div>
+    <div class="content">
+      @yield("formularioAdmin")
     </div>
     
 </body>

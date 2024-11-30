@@ -20,7 +20,11 @@ Route::get('/usuarioAdmin', [ControladorVistas::class, 'serviciosUsuario'])->nam
 Route::get('/tarifas', [ControladorVistas::class, 'tarifas'])->name('rutaTerminos');
 Route::get('/adminVuelos', [controladorVistas::class, 'admin_vuelos'])->name('AdministracionVuelos');
 Route::get('/adminHoteles', [controladorVistas::class, 'admin_hoteles'])->name('AdministracionHoteles');
+Route::get('/administradores', [controladorVistas::class, 'admin_agregar'])->name('Administracion');
+
 
 Route::post('/enviarRegistro', [controladorForms::class, 'Registro'])->name('rutaRegistrar');
 Route::post('/inicioSesion', [controladorForms::class, 'InicioSesion'])->name('rutaSesion');
 Route::post('/enviarCambios', [controladorForms::class, 'Cambios'])->name('rutaCambios');
+Route::get('/administradores/agregar', [controladorVistas::class, 'admin_nuevo'])->name('AdministracionAgregar');
+

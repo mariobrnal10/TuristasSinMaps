@@ -58,4 +58,10 @@ class ControladorVistas extends Controller
     public function admin_hoteles(){
         return view('admin_hoteles');
     }
+    public function admin_agregar(){
+        return view('agregar_admin');
+    }
+    public function admin_nuevo(){
+        return view('formulario_administracion');
+    }
 }
