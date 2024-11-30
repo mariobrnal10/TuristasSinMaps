@@ -46,7 +46,7 @@
                 <li class="nav-item mx-3">
                     <a class="nav-link d-flex flex-column align-items-center text-center" href="#">
                         <img src="{{ asset('img/4.png') }}" alt="Política Icon" style="width: 40px; height: 40px;" class="mb-1">
-                        <span class="text-dark fw-semibold">Política De Privacidad</span>
+                        <span class="text-dark fw-semibold">Términos y Condiciones</span>
                     </a>
                 </li>
             </ul>
