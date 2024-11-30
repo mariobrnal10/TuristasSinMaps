@@ -8,7 +8,7 @@
 
 <style>
  body {
-        background-image: url('{{ asset('img/contacto2.jpg') }}'); 
+        background-image: url('{{ asset('img/contacto2.png') }}'); 
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
