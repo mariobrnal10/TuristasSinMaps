@@ -46,7 +46,7 @@
             </h2>
 
             <div class="text-center mb-3">
-                <img src="img/agregar.png" alt="Logo" class="img-fluid rounded-circle shadow" style="max-width: 80px;">
+                <img src="img/iconcon.png" alt="Logo" class="img-fluid rounded-circle shadow" style="max-width: 80px;">
             </div>
 
             <div class="mb-2">
