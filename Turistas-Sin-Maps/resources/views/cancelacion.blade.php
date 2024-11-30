@@ -56,7 +56,7 @@
                 <input type="text" class="form-control form-control-sm shadow-sm mb-2" name="noches" placeholder="Noches" value="{{ old('noches') }}">
                 <input type="text" class="form-control form-control-sm shadow-sm" name="total" placeholder="Total" value="{{ old('total') }}">
 
-                <small class="fst-italic text-danger">{{ $errors->first('vuelo') }}</small>
+                <small class="fst-italic text-danger">{{ $errors->first('hotel') }}</small>
             </div>
 
             <div class="mb-4">
