@@ -64,4 +64,8 @@ class ControladorVistas extends Controller
     public function admin_nuevo(){
         return view('formulario_administracion');
     }
+    public function terminos(){
+        return view('terminos_condiciones');
+    }
+    
 }
