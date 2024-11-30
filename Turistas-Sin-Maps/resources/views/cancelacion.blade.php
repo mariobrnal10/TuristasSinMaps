@@ -19,7 +19,7 @@
     }
 
     </style>
-        <section class="hero" style="background-image: url('{{ asset('img/INICIO.jpg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat; width: 100vw; height: 100vh;">
+        <section class="hero">
         <link rel="stylesheet" href="{{ asset('css/welcome.css') }}"> 
     <div class="vuelos-container">
         <h2 class="text-center">Cancelar Reservacion</h2>

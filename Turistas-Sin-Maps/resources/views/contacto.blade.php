@@ -7,6 +7,13 @@
 
 
 <style>
+ body {
+        background-image: url('{{ asset('img/contacto2.jpg') }}'); 
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed; 
+    }
     .terms-container {
         background-color: #fff;
         border: 1px solid #ddd;
