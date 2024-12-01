@@ -3,51 +3,73 @@
 
 @section('cancelar')
 
-<body>
-    <style>
-        .vuelos-container{
-        background-color: rgba(208, 210, 210, 0.321);
-        padding: 20px;
-        border-radius: 10px;
-        width: 100%;
-        max-width: 700px;
-        text-align: center;
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
+<<style>
 
-    </style>
-        <section class="hero" style="background-image: url('{{ asset('img/INICIO.jpg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat; width: 100vw; height: 100vh;">
-        <link rel="stylesheet" href="{{ asset('css/welcome.css') }}"> 
-    <div class="vuelos-container">
-        <h2 class="text-center">Cancelar Reservacion</h2>
-        <div class="mb-4">
-            <h4>Detalles del vuelo</h4>
-            <ul class="lista">
-                <li>Vuelo: 12345</li>
-                <li>Aerolinea: AeroMexico</li>
-                <li>Fecha: 23/11/2024</li>
-                <li>Total: $4500</li>
-            </ul>
-            <h4>Detalles del hotel</h4>
-            <ul>
-                <li>Lugar: Amelaco de Bonfil</li>
-                <li>Hotel: Cabañas Martinez</li>
-                <li>NOches: 3 noches</li>
-                <li>Total: $6000</li>
-                
-            </ul>
-        </div>
-        <div class="form-group mb-5">
-            <label for="razonCancelacion"><h4>Razon de su cancelacion</h4></label>
-            <input type="text" class="form-control" nombre="razonCancelacion" placeholder="Ingrese la razon de su cancelacion">
-        </div>
-        <div class="d-flex justify-content-between">
-            <button type="button" class="btn btn-danger">Confirmar cancelacion</button>
-            <button type="button" class="btn btn-secondary">Volver</button>
-        </div>
+    .terms-container {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin: 40px auto;
+        max-width: 800px;
+    }
+</style>
+
+<div class="registro-container" style="background-image: url('{{ asset('img/cancelacion.jpg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat; width: 100vw; height: 120vh;">
+    <div class="container">
+        @session('exito')
+        <script>
+            Swal.fire({
+                title: "¡Cancelación exitosa!",
+                text: "¡Te vamos a extrañar!",
+                icon: "success"
+            });
+        </script>
+        @endsession
+
+        <!-- Se agrega la clase 'terms-container' al formulario -->
+        <form action="/enviarRegistro" method="POST" class="terms-container">
+            @csrf
+
+            <h2 class="text-center mb-3 font-weight-bold text-dark">
+                <i class="bi bi-person-plus-fill"></i> Registro de cancelación
+            </h2>
+
+            <div class="text-center mb-3">
+                <img src="img/iconcacell.png" alt="Logo" class="img-fluid rounded-circle shadow" style="max-width: 80px;">
+            </div>
+            <div class="mb-4">
+                <h4 class="text-center text-dark font-weight-bold">{{ __('Detalles del vuelo') }}</h4>
+                <input type="text" class="form-control form-control-sm shadow-sm mb-2" name="vuelo" placeholder="Vuelo" value="{{ old('vuelo') }}">
+                <input type="text" class="form-control form-control-sm shadow-sm" name="aerolinea" placeholder="Aerolínea" value="{{ old('aerolinea') }}">
+                <input type="text" class="form-control form-control-sm shadow-sm mb-2" name="fecha" placeholder="Fecha" value="{{ old('fecha') }}">
+                <input type="text" class="form-control form-control-sm shadow-sm" name="total" placeholder="Total" value="{{ old('total') }}">
+
+                <small class="fst-italic text-danger">{{ $errors->first('vuelo') }}</small>
+            </div>
+
+            <div class="mb-4">
+                <h4 class="text-center text-dark font-weight-bold">{{ __('Detalles del hotel') }}</h4>
+                <input type="text" class="form-control form-control-sm shadow-sm mb-2" name="lugar" placeholder="Lugar" value="{{ old('lugar') }}">
+                <input type="text" class="form-control form-control-sm shadow-sm" name="hotel" placeholder="Hotel" value="{{ old('hotel') }}">
+                <input type="text" class="form-control form-control-sm shadow-sm mb-2" name="noches" placeholder="Noches" value="{{ old('noches') }}">
+                <input type="text" class="form-control form-control-sm shadow-sm" name="total" placeholder="Total" value="{{ old('total') }}">
+
+                <small class="fst-italic text-danger">{{ $errors->first('hotel') }}</small>
+            </div>
+
+            <div class="mb-4">
+                <h4 class="text-center text-dark font-weight-bold">{{ __('Motivo de cancelación') }}</h4>
+                <input type="text" class="form-control form-control-sm shadow-sm mb-2" name="descripcion" placeholder="Descripción" value="{{ old('descripcion') }}">
+
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-success btn-lg shadow-lg w-75">
+                    {{__('Cancelar')}}
+                </button>
+            </div>
+        </form>
     </div>
-</body>
-@endsection 
+</div>
+
+@endsection

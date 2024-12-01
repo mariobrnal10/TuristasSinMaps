@@ -37,14 +37,14 @@
                 </li>
 
                 <li class="nav-item mx-3">
-                    <a class="nav-link d-flex flex-column align-items-center text-center" href="{{route('rutaInicio')}}">
+                    <a class="nav-link d-flex flex-column align-items-center text-center" href="{{route('rutaContacto')}}">
                         <img src="{{ asset('img/3.png') }}" alt="Contacto Icon" style="width: 40px; height: 40px;" class="mb-1">
                         <span class="text-dark fw-semibold">Contacto</span>
                     </a>
                 </li>
 
                 <li class="nav-item mx-3">
-                    <a class="nav-link d-flex flex-column align-items-center text-center" href="#">
+                    <a class="nav-link d-flex flex-column align-items-center text-center" href="{{route('rutaTerminos')}}">
                         <img src="{{ asset('img/4.png') }}" alt="Política Icon" style="width: 40px; height: 40px;" class="mb-1">
                         <span class="text-dark fw-semibold">Términos y Condiciones</span>
                     </a>
@@ -70,6 +70,9 @@
     </div>
     <div class="content">
         @yield('contenidoRegistro')
+    </div>
+    <div class="content">
+        @yield('contenidoTerminos')
     </div>
 
     <!-- Footer -->
