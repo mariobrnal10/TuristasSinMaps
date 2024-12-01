@@ -75,6 +75,28 @@
         @yield('contenidoTerminos')
     </div>
 
+    <div class="content">
+        @yield('contenidoPoliticaDePrivacidad')
+    </div>
+
+    <div class="content">
+        @yield("contenidoVerificacion")
+    </div>
+
+    <div class="content">
+        @yield("contenidoRecuperar")
+    </div>
+
+    <div class="content">
+        @yield("contenidoVerificarCodigo")
+    </div>
+
+    <div class="content">
+        @yield("contenidoNuevaContraseña")
+    </div>
+
+
+
     <!-- Footer -->
     <footer style="background-color: #f8f9fa; padding: 20px; text-align: center; border-top: 1px solid #e7e7e7;">
     <p style="margin: 0; color: #6c757d; font-size: 14px;">

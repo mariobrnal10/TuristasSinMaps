@@ -70,4 +70,20 @@ class ControladorVistas extends Controller
     public function terminos(){
         return view('terminos_condiciones');
     }
+
+    public function Privacidad(){
+        return view('politica_de_privacidad');
+    }
+
+    public function verificacion(){
+        return view('verificacion');
+    }
+
+    public function mostrarFormularioVerificarCodigo()
+{
+    return view('verificarCodigo');
+}
+
+
+    
 }

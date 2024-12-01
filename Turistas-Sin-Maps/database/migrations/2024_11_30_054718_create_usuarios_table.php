@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('email', 255)->unique(); // Email único
             $table->string('telefono', 20)->nullable(); // Teléfono
             $table->string('contraseña', 255); // Contraseña
+            $table->string('codigo_verificacion', 6)->nullable(); // Código de verificación
+            $table->boolean('verificado')->default(false); // Estado de verificación
             $table->foreignId('id_rol') // Llave foránea hacia roles
                   ->constrained('roles')
                   ->onDelete('cascade')

@@ -20,11 +20,11 @@
     
         
     <div class="formulario-container">
-        @session('cambio')
+        @session('exito')
     <script>
         Swal.fire({
             title: "Muy Bien!",
-            text: "Los Cambios Han sido Guardados!",
+            text: "Usuario Guardado Con Exito!",
             icon: "success"
         });
     </script>    
@@ -44,7 +44,7 @@
         </div>
         <div>
             <label for="email" class="form-label">Email</label>
-            <input type="text" class="form-control" name="email" value="{{old('email')}}">
+            <input type="email" class="form-control" name="email" value="{{old('email')}}">
             <small class="fst-italic text-danger">{{$errors->first('email')}}</small>
         </div>
         <div>
@@ -53,7 +53,7 @@
             <small class="fst-italic text-danger">{{$errors->first('telefono')}}</small>
             <div>
                 <label for="contraseña" class="form-label">Contraseña</label>
-                <input type="text" class="form-control" name="contraseña" value="{{old('telefono')}}">
+                <input type="password" class="form-control" name="contraseña" value="{{old('telefono')}}">
                 <small class="fst-italic text-danger">{{$errors->first('contraseña')}}</small>
             </div>
         </div>

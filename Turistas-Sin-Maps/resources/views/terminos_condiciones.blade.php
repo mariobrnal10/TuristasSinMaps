@@ -63,6 +63,29 @@
             <li>contenga virus u otros programas de computadora que puedan dañar el software o hardware o que puedan afectar el uso de computadoras,</li>
             <li>sea una encuesta o cadena,</li>
             <li>tenga por objetivo recolectar o utilizar los datos personales de otros usuarios, especialmente para fines comerciales.</li>
+            
+            <h2>5. Limitación de responsabilidad</h2>
+            <p>Turista sin maps no garantiza la precisión, integridad o veracidad de la información proporcionada por terceros en su plataforma. Además, no nos hacemos responsables de:</p>
+            <ul>
+                <li>Cualquier daño directo, indirecto, especial o consecuente derivado del uso de nuestro sitio web.</li>
+                <li>Problemas con los servicios reservados a través de terceros, incluyendo, pero no limitándose a, cancelaciones, cambios de reserva o calidad del servicio.</li>
+                <li>Errores técnicos, interrupciones o problemas en el acceso al sitio web o a sus funcionalidades.</li>
+            </ul>
+            <h2>6. Propiedad intelectual</h2>            
+            <p>Todos los derechos de propiedad intelectual del contenido y diseño del sitio web (incluidos, entre otros, textos, gráficos, logotipos, imágenes, y software) pertenecen a Turista sin maps o a sus licenciantes. Está prohibido reproducir, distribuir, modificar o publicar cualquier contenido del sitio sin el consentimiento previo por escrito de Turista sin maps.</p>
+            <h2>7. Privacidad y protección de datos</h2>
+            <p>La recopilación y el uso de los datos personales de los usuarios se rigen por nuestra <a href="{{route('rutaPrivacidad')}}">Política de Privacidad</a>. Al utilizar nuestra plataforma, los usuarios aceptan el uso de sus datos personales según se detalla en dicha política.</p>
+            <h2>8. Cambios en los términos y condiciones</h2>
+            <p>Turista sin maps se reserva el derecho de modificar estos términos y condiciones en cualquier momento. Las versiones actualizadas estarán disponibles en nuestro sitio web, y su uso continuado del sitio después de los cambios constituirá la aceptación de los nuevos términos.</p>
+            <h2>9. Ley aplicable y jurisdicción</h2>
+            <p>Estos términos y condiciones se regirán e interpretarán de acuerdo con las leyes de [tu país o región]. Cualquier disputa relacionada con estos términos estará sujeta a la jurisdicción exclusiva de los tribunales de [ciudad o región específica].</p>
+            <h2>10. Contacto</h2>
+            <p>Si tiene alguna pregunta o inquietud sobre estos términos y condiciones, puede ponerse en contacto con nosotros a través de:</p>
+<ul>
+    <li>Email: soporte@turistasinmaps.com</li>
+    <li>Teléfono: +52 123 456 7890</li>
+</ul>
+
         </ul>
 
        

@@ -62,6 +62,10 @@
     <div class="content">
       @yield("formularioAdmin")
     </div>
+
+    <div class="content">
+      @yield("contenidoVerificacion")
+    </div>
     
 </body>
 </html>

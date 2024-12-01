@@ -22,10 +22,10 @@ class Validador extends FormRequest
     public function rules(): array
     {
         return [
-            'nombre' => 'required|min:5|max:255',
+            'nombre' => 'required|min:3|max:255',
             'apellido' => 'required|min:5|max:255',
-            'correo' => 'required|email:rfc,dns',
-            'telefono' => 'required|numeric',
+            'email' => 'required|email:rfc,dns|unique:usuarios,email',
+            'telefono' => 'nullable|numeric',
             'contraseña' => 'required|min:8',
         ];
     }
