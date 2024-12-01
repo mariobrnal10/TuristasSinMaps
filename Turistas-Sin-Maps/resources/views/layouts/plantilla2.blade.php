@@ -126,7 +126,7 @@
       @yield("tarifas")
     </div>
 
-    <footer style="background-color: #f8f9fa; padding: 20px; text-align: center; border-top: 1px solid #e7e7e7;">
+<footer style="background-color: #f8f9fa; padding: 20px; text-align: center; border-top: 1px solid #e7e7e7;">
     <p style="margin: 0; color: #6c757d; font-size: 14px;">
         &copy; 2024 Tusita Sin Maps. Todos los derechos reservados.
     </p>

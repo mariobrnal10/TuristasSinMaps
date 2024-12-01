@@ -3,7 +3,8 @@
 @section('titulo', 'Carrito de Compras')
 
 @section('css-carrito')
-<link rel="stylesheet" href="{{ asset('css/carrito.css') }}">
+
+    
 @endsection
 
 @section('contenidoCarrito')
