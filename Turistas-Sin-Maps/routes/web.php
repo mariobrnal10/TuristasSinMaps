@@ -106,5 +106,18 @@ Route::post('/vuelos/buscar', [VuelosController::class, 'buscarVuelos'])->name('
 Route::get('/administradores/agregar', [controladorVistas::class, 'admin_nuevo'])->name('AdministracionAgregar');
 Route::get('/PoliticaDePrivacidad', [ControladorVistas::class, 'Privacidad'])->name('rutaPrivacidad');
 
+//carro
+use App\Http\Controllers\FrontCarrito;
+
+Route::get('/carrito',[FrontCarrito::class, 'index'])->name('carritoVista');
+
+Route::post('/carrito/agregar',[CarritoController::class, 'add'])->name('carritoAgregar');
+Route::get('/carrito/checkout',[CarritoController::class, 'checkout'])->name('carritoCheckout');
+Route::get('/carrito/clear',[CarritoController::class, 'clear'])->name('carritoClear');
+Route::post('/carrito/remove',[CarritoController::class, 'remove'])->name('carritoBorrar');
+
+
+
+
 
 
