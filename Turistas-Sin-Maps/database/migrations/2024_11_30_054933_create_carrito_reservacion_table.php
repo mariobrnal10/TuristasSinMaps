@@ -12,12 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('carrito_reservacion', function (Blueprint $table) {
-            $table->id(); // id_carrito
-            $table->foreignId('id_usuario') // Relación con usuarios
-                  ->constrained('usuarios')
-                  ->onDelete('cascade')
-                  ->onUpdate('cascade');
-            $table->foreignId('id_vuelo')->nullable() // Relación con vuelos (opcional)
+            $table->id(); // ID único para cada entrada en el carrito
+            $table->foreignId('id_vuelo')->nullable() // Relación con vuelos
                   ->constrained('vuelos')
                   ->onDelete('set null')
                   ->onUpdate('cascade');
@@ -25,7 +21,7 @@ return new class extends Migration
                   ->constrained('hoteles')
                   ->onDelete('set null')
                   ->onUpdate('cascade');
-            $table->integer('cantidad'); // Cantidad de pasajeros o habitaciones
+            $table->integer('cantidad')->default(1); // Cantidad de pasajeros o habitaciones
             $table->decimal('precio_parcial', 10, 2); // Precio parcial de la reserva
             $table->timestamps(); // created_at y updated_at
         });

@@ -8,67 +8,64 @@ use Illuminate\Support\Facades\DB;
 class VuelosController extends Controller
 {
     public function buscarVuelos(Request $request)
-{
-    // Obtener filtros del formulario
-    $origen = $request->input('origen');
-    $destino = $request->input('destino');
-    $fecha_salida = $request->input('fechasalida');
-    $fecha_regreso = $request->input('fecharegreso');
-    $precio = $request->input('filtroprecio');
-    $duracion = $request->input('duracion');
-    
-    // Construir la consulta
-    $query = DB::table('vuelos')
-        ->join('aerolineas', 'vuelos.id_aerolinea', '=', 'aerolineas.id')
-        ->join('clases_vuelos', 'vuelos.id_clase', '=', 'clases_vuelos.id')
-        ->select(
-            'vuelos.*',
-            'aerolineas.nombre as aerolinea',
-            'clases_vuelos.nombre_clase'
-        );
-    
-    if ($origen) {
-        $query->where('vuelos.origen', 'LIKE', "%$origen%");
-    }
-    
-    if ($destino) {
-        $query->where('vuelos.destino', 'LIKE', "%$destino%");
-    }
-    
-    if ($fecha_salida) {
-        $query->where('vuelos.fecha_salida', '=', $fecha_salida);
-    }
-    
-    if ($precio) {
-        $rango = explode('-', $precio);
-        if (count($rango) === 2) {
-            $query->whereBetween('vuelos.precio', [$rango[0], $rango[1]]);
-        } elseif ($precio === '8000') {
-            $query->where('vuelos.precio', '>', 8000);
+    {
+        // Validar entrada
+        $validated = $request->validate([
+            'origen' => 'nullable|string|max:255',
+            'destino' => 'nullable|string|max:255',
+            'fechasalida' => 'nullable|date',
+            'filtroprecio' => 'nullable|string',
+            'duracion' => 'nullable|string',
+        ]);
+
+        // Log de entrada para depuración
+        \Log::info('Datos recibidos en buscarVuelos:', $validated);
+
+        // Construir consulta
+        $query = DB::table('vuelos')
+            ->join('aerolineas', 'vuelos.id_aerolinea', '=', 'aerolineas.id')
+            ->join('clases_vuelos', 'vuelos.id_clase', '=', 'clases_vuelos.id')
+            ->select(
+                'vuelos.*',
+                'aerolineas.nombre as aerolinea',
+                'clases_vuelos.nombre_clase'
+            );
+
+        if ($request->filled('origen')) {
+            $query->where('vuelos.origen', 'LIKE', "%{$validated['origen']}%");
         }
-    }
-    
-    if ($duracion) {
-        if ($duracion === 'Directo') {
-            $query->where('vuelos.estado', '=', 'disponible');
-        } elseif ($duracion === '1 escala') {
-            $query->where('vuelos.estado', '=', 'ocupado');
-        } elseif ($duracion === '2 o más escalas') {
-            $query->where('vuelos.estado', '=', 'cancelado');
+
+        if ($request->filled('destino')) {
+            $query->where('vuelos.destino', 'LIKE', "%{$validated['destino']}%");
         }
-    }
-    
-    // Obtener resultados
-    $resultados = $query->get();
-    
-    // Si la solicitud es AJAX (fetch), devolver resultados como JSON
-    if ($request->ajax()) {
+
+        if ($request->filled('fechasalida')) {
+            $query->where('vuelos.fecha_salida', '=', $validated['fechasalida']);
+        }
+
+        if ($request->filled('filtroprecio')) {
+            $rango = explode('-', $validated['filtroprecio']);
+            if (count($rango) === 2) {
+                $query->whereBetween('vuelos.precio', [$rango[0], $rango[1]]);
+            } elseif ($validated['filtroprecio'] === '8000') {
+                $query->where('vuelos.precio', '>', 8000);
+            }
+        }
+
+        if ($request->filled('duracion')) {
+            $estadoMap = [
+                'Directo' => 'disponible',
+                '1 escala' => 'ocupado',
+                '2 o más escalas' => 'cancelado',
+            ];
+            if (isset($estadoMap[$validated['duracion']])) {
+                $query->where('vuelos.estado', '=', $estadoMap[$validated['duracion']]);
+            }
+        }
+
+        // Obtener resultados
+        $resultados = $query->get();
+
         return response()->json($resultados);
     }
-
-    // Si no es una solicitud AJAX, devolver la vista
-    return view('busqueda_vuelos', compact('resultados'));
-}
-
-    
 }

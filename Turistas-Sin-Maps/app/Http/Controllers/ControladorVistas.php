@@ -22,9 +22,7 @@ class ControladorVistas extends Controller
         return view('home');
     }
 
-    public function carrito(){
-        return view('carrito');
-    }
+   
     public function usuario(){
         return view('usuario');
     }

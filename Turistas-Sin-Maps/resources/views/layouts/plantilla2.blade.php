@@ -59,11 +59,12 @@
 
                 <!-- Enlace Carrito -->
                 <li class="nav-item mx-3">
-                    <a class="nav-link d-flex flex-column align-items-center text-center {{ request()->routeIs('rutaCarrito') ? 'active' : '' }}" href="{{route('rutaCarrito')}}">
+                    <a class="nav-link d-flex flex-column align-items-center text-center {{ request()->routeIs('carrito.listar') ? 'active' : '' }}" href="{{ route('carrito.listar') }}">
                         <img src="{{ asset('img/7.png') }}" alt="Carrito Icon" style="width: 40px; height: 40px;" class="mb-1">
                         <span class="text-dark fw-semibold">Carrito</span>
                     </a>
                 </li>
+                
 
                 <!-- Enlace Cancelación -->
                 <li class="nav-item mx-3">
