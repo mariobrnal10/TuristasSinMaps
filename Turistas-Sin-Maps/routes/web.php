@@ -34,6 +34,7 @@ Route::get('/verificacion', [ControladorVistas::class, 'verificacion'])->name('r
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ControladorRecuperacion;
 use App\Http\Controllers\HotelesController;
+use App\Http\Controllers\VuelosController;
 
 // Ruta para el formulario de login
 Route::get('/login', [ControladorVistas::class, 'login'])->name('rutaLogin');
@@ -67,6 +68,8 @@ Route::post('/recuperar/actualizarContrasena', [ControladorRecuperacion::class, 
 //hoteles
 Route::post('/hoteles/buscar', [HotelesController::class, 'buscarHoteles'])->name('buscarHoteles');
 
+//vuelos
+Route::post('/vuelos/buscar', [VuelosController::class, 'buscarVuelos'])->name('buscarVuelos');
 
 
 
