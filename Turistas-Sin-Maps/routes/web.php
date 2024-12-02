@@ -43,6 +43,10 @@ Route::delete('/cliente/{id}', [Administradores::class, 'destroy'])->name('clien
 Route::post('/administradores/{id}', [Administradores::class, 'update'])->name('actualizarAdmin');
 
     //hoteles
+Route::get('/lista/hoteles', [HotelesController::class, 'index'])->name('listarHoteles'); 
+Route::delete('/hotel/{id}', [HotelesController::class, 'destroy'])->name('hotel.destroy');
+
+
 
 
 
