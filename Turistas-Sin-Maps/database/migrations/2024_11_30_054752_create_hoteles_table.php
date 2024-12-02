@@ -22,8 +22,10 @@ return new class extends Migration
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
             $table->decimal('precio_noche', 10, 2); // Precio por noche
+            $table->string('foto')->nullable(); // Columna para la foto
             $table->timestamps(); // created_at y updated_at
         });
+        
     }
 
     /**

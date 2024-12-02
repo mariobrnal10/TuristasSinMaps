@@ -7,7 +7,7 @@
 <div class="container py-5">
     <div class="vuelos-container bg-light p-5 rounded shadow-sm">
         <h2 class="text-center text-primary mb-4">Búsqueda de Hoteles</h2>
-        <form action="{{ route('buscarHoteles') }}" method="POST">
+        <form id="formHoteles" action="{{ route('buscarHoteles') }}" method="POST">
             @csrf
             <div class="form-row">
                 <div class="form-group col-md-6">
@@ -78,15 +78,18 @@
 </div>
 
 <script>
-    document.getElementById('buscarHoteles').addEventListener('click', function () {
-        const formData = new FormData(document.getElementById('formHoteles'));
-        fetch("{{ route('buscarHoteles') }}", {
-            method: 'POST',
-            headers: {
-                'X-CSRF-TOKEN': '{{ csrf_token() }}',
-            },
-            body: formData,
-        })
+    document.getElementById('formHoteles').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const formData = new FormData(this);
+
+    fetch("{{ route('buscarHoteles') }}", {
+        method: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+        },
+        body: formData,
+    })
         .then(response => response.json())
         .then(data => {
             const resultadosDiv = document.getElementById('resultados');
@@ -99,7 +102,8 @@
                     resultadosDiv.innerHTML += `
                         <div class="col-md-6 mb-4">
                             <div class="card h-100 shadow">
-                                <img src="{{ asset('img/default-hotel.jpg') }}" class="card-img-top" alt="${hotel.nombre}">
+                                <img src="${hotel.foto}" class="card-img-top" alt="${hotel.nombre}" width="200" height="250">
+
                                 <div class="card-body">
                                     <h5 class="card-title">${hotel.nombre}</h5>
                                     <p class="card-text">
@@ -116,7 +120,9 @@
             }
         })
         .catch(error => console.error('Error:', error));
-    });
+});
+
+
 </script>
 </body>
 @endsection
