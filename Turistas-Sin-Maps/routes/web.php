@@ -4,6 +4,11 @@ use App\Http\Controllers\controladorForms;
 use App\Http\Controllers\controladorUsuarios;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ControladorVistas;
+use App\Http\Controllers\Administradores;
+use App\Http\Controllers\Vuelos;
+use App\Http\Controllers\usuarios;
+
+
 
 Route::get('/', [ControladorVistas::class, 'inicio'])->name('rutaInicio');
 Route::get('/registro', [controladorUsuarios::class, 'index'])->name('rutaRegistro');
@@ -23,6 +28,25 @@ Route::get('/adminHoteles', [controladorVistas::class, 'admin_hoteles'])->name('
 Route::get('/administradores', [controladorVistas::class, 'admin_agregar'])->name('Administracion');
 Route::get('/terminos', [ControladorVistas::class, 'terminos'])->name('rutaTerminos');
 Route::get('/contacto', [controladorVistas::class, 'formContacto'])->name('rutaContacto');
+Route::get('/administradores/nuevo', [controladorVistas::class, 'admin_nuevo'])->name('administrador_nuevo');
+
+//admins Alonso
+Route::post('/agregar/admin', [Administradores::class, 'store'])->name('enviarAdmin');
+Route::get('/lista/admins', [Administradores::class, 'index'])->name('listarAdmins'); 
+Route::delete('/clientes/{id}',[Administradores::class, 'destroy'])->name('cleinte.destroy');
+//hoteles
+
+
+
+//vuelos
+Route::get('/lista/vuelos', [Vuelos::class, 'index'])->name('listarVuelos'); 
+
+//usuarios
+Route::get('/lista/usuarios', [Usuarios::class, 'index'])->name('listarUsuarios'); 
+
+
+
+
 
 //ruta registrar usuarios
 Route::post('/enviarRegistro', [controladorUsuarios::class, 'store'])->name('rutaRegistrar');
@@ -66,6 +90,11 @@ Route::post('/recuperar/actualizarContrasena', [ControladorRecuperacion::class, 
 //rutas de busqueda de hoteles y vuelos
 //hoteles
 Route::post('/hoteles/buscar', [HotelesController::class, 'buscarHoteles'])->name('buscarHoteles');
+
+Route::get('/lista/hoteles', [HotelesController::class, 'index'])->name('listarHoteles'); 
+Route::get('/lista/hoteles', [HotelesController::class, 'index'])->name('listarHoteles'); 
+
+
 
 
 

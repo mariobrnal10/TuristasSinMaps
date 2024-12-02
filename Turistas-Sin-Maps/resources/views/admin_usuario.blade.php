@@ -1,62 +1,141 @@
 @extends('layouts.plantilla_admin')
-@section('titulo', 'Servicios Usuario')
+@section('titulo', 'Administración de Hoteles')
 
-@section('serviciosUsuario')
-
+@section('AdminHoteles')
 <body>
     <style>
-    .usuario{
-    background-color: rgba(208, 210, 210, 0.321);
-    padding: 20px;
-    border-radius: 10px;
-    width: 100%;
-    max-width: 700px;
-    text-align: center;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    }
-    
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+
+        .hero {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 2000px;
+            min-height: 70vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .usuario {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 1200px;
+            text-align: center;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .usuario h2, .usuario h3 {
+            color: #343a40;
+            margin-bottom: 20px;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            min-width: 800px;
+            border-collapse: collapse;
+            background-color: white;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            vertical-align: middle;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: rgb(23, 19, 19);
+        }
+
+        td {
+            color: #343a40;
+        }
+
+        .btn {
+            font-size: 14px;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.2s, opacity 0.2s;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            color: white;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border: none;
+            color: white;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            border: none;
+            color: white;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .mt-4 {
+            margin-top: 20px;
+        }
     </style>
-    <section class="hero" style="background-image: url('{{ asset('img/inicioadmin.jpg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat; width: 100vw; height: 100vh;">
 
-    <link rel="stylesheet" href="{{ asset('css/welcome.css') }}"> 
-
-    <div class="usuario">
-        <h2><center>Panel de administracion de servicios para usuarios de Turista sin Maps</center></h2>
-        <div>
-            <h3>Usuarios Registrados</h3>
-            <table class="table table-bordered">
-                <thead class="tehad-light">
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Correo</th>
-                        <th>Telefono</th>
-                        <th>Contraseña</th>
-                        <th>Actualizar</th>
-                        <th>Eliminar</th>
-                    </tr>
-                    <tbody>
+    <section class="hero">
+        <div class="usuario">
+            <h2>Panel de Administración de Servicios</h2>
+            <h3>Hoteles Registrados</h3>
+            
+            <div class="table-container">
+                <table class="table table-bordered">
+                    <thead>
                         <tr>
-                            <td>12345678</td>
-                            <td>AeroMexico</td>
-                            <td>08:00pm a 09:00pm</td>
-                            <td>$4500</td>
-                            <td>Disponible</td>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Telefono</th>
+                            <th>Contraseña</th>
+                            <th>Actualizar</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($consultarUsuarios as $usuario)
+                        <tr>
+                            <td>{{ $usuarios->id }}</td>
+                            <td>{{ $usuarios->nombre }}</td>
+                            <td>{{ $usuarios->email}}</td>
+                            <td>{{ $usuarios->telefono}}</td>
+                            <td>{{ $usuarios->contraseña }}</td>
                             <td><button type="button" class="btn btn-primary">Actualizar</button></td>
                             <td><button type="button" class="btn btn-danger">Eliminar</button></td>
                         </tr>
+                        @endforeach
                     </tbody>
-                </thead>
-            </table>
-            </form>
+                </table>
+            </div>
 
+            <div class="mt-4">
+                <button type="button" class="btn btn-success">Agregar Hotel</button>
+            </div>
         </div>
-        <div class="d-flex justify-content-between">
-            <button type="button" class="btn btn-success">Agregar Usuario</button>
-        </div>
-    </div>
+    </section>
 </body>
-@endsection 
+@endsection

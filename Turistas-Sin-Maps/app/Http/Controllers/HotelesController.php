@@ -50,5 +50,12 @@ class HotelesController extends Controller
 
         // Devuelve la misma vista con los resultados
         return view('busqueda_hoteles', compact('resultados'));
+
+        
+    }
+    public function index()
+    {
+        $consultarHoteles = DB::table('hoteles')->get();
+        return view('admin_hoteles', compact('consultarHoteles'));
     }
 }

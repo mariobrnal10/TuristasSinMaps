@@ -23,7 +23,7 @@ class ValidadorPerfil extends FormRequest
     {
         return [
         'nombre' => 'required|min:5|max:255',
-        'apellido' => 'required|min:5|max:255',
+        'apelido' => 'required|min:5|max:255',
         'email' => 'required|email:rfc,dns',
         'telefono' => 'required|numeric',
         'contraseña' => 'required|min:8'
