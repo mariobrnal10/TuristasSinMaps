@@ -30,30 +30,27 @@ class Administradores extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ValidadorPerfil $request)
+    public function store(Request $request)
     {
-        // Validar los datos recibidos
         $request->validate([
-            'nombre' => 'required|string|max:255',
-            'apellido' => 'required|string|max:255',
-            'correo' => 'required|email|max:255|unique:administradores',
-            'contraseña' => 'required|string|min:6',
+            'nombre' => 'required|string|max:20',
+            'apellido' => 'required|string|max:45',
+            'correo' => 'required|email|max:45|unique:administradores,correo',
+            'contraseña' => 'required|string|max:45',
         ]);
-    
-        // Crear el nuevo administrador
-        DB::table('administradores')->insert([
+
+        Administradores::create([
             'nombre' => $request->input('nombre'),
             'apelido' => $request->input('apellido'),
             'correo' => $request->input('correo'),
-            'contraseña' => bcrypt($request->input('contraseña')),
-            'created_at' => now(),
-            'updated_at' => now(),
+            'contraseña' => bcrypt($request->input('contraseña')), // Cifra la contraseña
         ]);
-    
-        // Redirigir con mensaje de éxito
-        session()->flash('exito', 'El administrador ha sido agregado correctamente.');
-        return to_route('listarAdmins');
+
+        return redirect()->route('administradores.create')->with('success', 'Administrador creado con éxito.');
     }
+    
+    
+    
     
     
     /**

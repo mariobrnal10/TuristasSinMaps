@@ -31,7 +31,7 @@ Route::get('/contacto', [controladorVistas::class, 'formContacto'])->name('rutaC
 Route::get('/administradores/nuevo', [controladorVistas::class, 'admin_nuevo'])->name('administrador_nuevo');
 
 //admins Alonso
-Route::post('/agregar/admin', [Administradores::class, 'store'])->name('enviarAdmin');
+Route::post('/agregar/admin', [Administradores::class, 'store'])->name('administradores.create');
 Route::get('/lista/admins', [Administradores::class, 'index'])->name('listarAdmins'); 
 Route::delete('/cliente/{id}', [Administradores::class, 'destroy'])->name('cliente.destroy');
 Route::post('/administradores/{id}', [Administradores::class, 'update'])->name('actualizarAdmin');
