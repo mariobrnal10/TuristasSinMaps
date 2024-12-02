@@ -107,11 +107,17 @@
                         <td>{{$administradores->correo}}</td>
                         <td>{{$administradores->contraseña}}</td>
                         <td><button type="button" class="btn btn-primary">Actualizar</button></td>
-                        <td><form id="delete-form" action="{{route('cliente.destroy',[id=>$administradores->id])}}" method="POST">
-                            @csrf
-                            @method(DELETE)
-                            <button type="button" class="btn btn-danger" onclick="confirmDelete({{$administradores->id}}, '{{$administradores->nombre}}')"></button>    
-                        </form></td>
+                        <td>
+                            <form action="{{ route('cliente.destroy', ['id' => $administradores->id]) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">
+                                    Eliminar
+                                </button>
+                            </form>
+                        </td>
+                        
+                        
 
                     </tr>
                     @endforeach

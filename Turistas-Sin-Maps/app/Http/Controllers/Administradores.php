@@ -30,21 +30,31 @@ class Administradores extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(validadorPerfil $request)
+    public function store(ValidadorPerfil $request)
     {
-        Db::table('administradores')->insert([
+        // Validar los datos recibidos
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'apellido' => 'required|string|max:255',
+            'correo' => 'required|email|max:255|unique:administradores',
+            'contraseña' => 'required|string|min:6',
+        ]);
+    
+        // Crear el nuevo administrador
+        DB::table('administradores')->insert([
             'nombre' => $request->input('nombre'),
             'apelido' => $request->input('apellido'),
             'correo' => $request->input('correo'),
-            'contraseña' => $request->input('contraseña'),
-
+            'contraseña' => bcrypt($request->input('contraseña')),
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
-
-        $usuario = $request->input('nombre');
-        session()->flash('exito', 'Se guardo el usuario: '.$usuario);
-            return to_route('listarAdmins');
     
+        // Redirigir con mensaje de éxito
+        session()->flash('exito', 'El administrador ha sido agregado correctamente.');
+        return to_route('listarAdmins');
     }
+    
     
     /**
      * Display the specified resource.
@@ -67,16 +77,45 @@ class Administradores extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Validar los datos enviados desde el formulario
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'apellido' => 'required|string|max:255',
+            'correo' => 'required|email|max:255',
+            'contraseña' => 'nullable|string|min:6', // La contraseña puede ser opcional
+        ]);
+    
+        // Verificar si el registro existe
+        $administrador = DB::table('administradores')->where('id', $id)->first();
+        if (!$administrador) {
+            return redirect()->back()->withErrors(['error' => 'El administrador no existe.']);
+        }
+    
+        // Actualizar el registro en la tabla administradores
+        DB::table('administradores')->where('id', $id)->update([
+            'nombre' => $request->input('nombre'),
+            'apellido' => $request->input('apellido'), // Corrige el typo "apelido" -> "apellido"
+            'correo' => $request->input('correo'),
+            // Si no se envía contraseña, se mantiene la actual
+            'contraseña' => $request->filled('contraseña') ? bcrypt($request->input('contraseña')) : $administrador->contraseña,
+            'updated_at' => now(), // Asegúrate de que exista el campo updated_at en la tabla
+        ]);
+    
+        // Redirigir con mensaje de éxito
+        session()->flash('exito', 'El administrador se ha actualizado correctamente.');
+        return redirect()->route('listarAdmins'); // Redirige a la lista de administradores
     }
+    
+    
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        $admin = DB::table('administradores')->where('id',$id)->first();
-        session()->flash('exito','El admin ha sido eliminado');
+        DB::table('administradores')->where('id', $id)->delete();
+        session()->flash('exito', 'El administrador ha sido eliminado');
         return to_route('listarAdmins');
     }
+    
 }

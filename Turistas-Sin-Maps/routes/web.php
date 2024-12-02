@@ -33,16 +33,22 @@ Route::get('/administradores/nuevo', [controladorVistas::class, 'admin_nuevo'])-
 //admins Alonso
 Route::post('/agregar/admin', [Administradores::class, 'store'])->name('enviarAdmin');
 Route::get('/lista/admins', [Administradores::class, 'index'])->name('listarAdmins'); 
-Route::delete('/clientes/{id}',[Administradores::class, 'destroy'])->name('cleinte.destroy');
-//hoteles
+Route::delete('/cliente/{id}', [Administradores::class, 'destroy'])->name('cliente.destroy');
+Route::post('/administradores/{id}', [Administradores::class, 'update'])->name('actualizarAdmin');
+
+    //hoteles
 
 
 
 //vuelos
 Route::get('/lista/vuelos', [Vuelos::class, 'index'])->name('listarVuelos'); 
+Route::delete('/vuelo/{id}', [Vuelos::class, 'destroy'])->name('vuelos.destroy');
+
 
 //usuarios
 Route::get('/lista/usuarios', [Usuarios::class, 'index'])->name('listarUsuarios'); 
+Route::delete('/usuarios/{id}', [Usuarios::class, 'destroy'])->name('usuarios.destroy');
+
 
 
 
@@ -91,8 +97,9 @@ Route::post('/recuperar/actualizarContrasena', [ControladorRecuperacion::class, 
 //hoteles
 Route::post('/hoteles/buscar', [HotelesController::class, 'buscarHoteles'])->name('buscarHoteles');
 
-Route::get('/lista/hoteles', [HotelesController::class, 'index'])->name('listarHoteles'); 
-Route::get('/lista/hoteles', [HotelesController::class, 'index'])->name('listarHoteles'); 
+Route::get('/lista/hoteles', [HotelesController::class, 'index'])->name('listarHoteles');
+Route::delete('/hotel/{id}', [HotelesController::class, 'destroy'])->name('hotel.destroy');
+
 
 
 

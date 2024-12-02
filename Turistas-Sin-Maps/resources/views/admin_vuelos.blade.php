@@ -106,7 +106,14 @@
                         <td>{{$vuelos->fecha_llegada}}</td>
                         <td>{{$vuelos->precio}}</td>
                         <td><button type="button" class="btn btn-primary">Actualizar</button></td>
-                        <td><button type="button" class="btn btn-danger">Eliminar</button></td>
+                        <td>
+                            <form action="{{ route('vuelos.destroy', ['id' => $vuelos->id]) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">
+                                Eliminar
+                            </button>
+                        </form></td>
                     </tr>
                     @endforeach
                 </tbody>

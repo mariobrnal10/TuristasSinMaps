@@ -62,6 +62,8 @@ class Usuarios extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        DB::table('usuarios')->where('id', $id)->delete();
+        session()->flash('exito', 'El usuario ha sido eliminado');
+        return to_route('listarUsuarios');
     }
 }

@@ -125,7 +125,14 @@
                             <td>{{ $hoteles->num_habitaciones }}</td>
                             <td>{{ $hoteles->habitaciones_disponibles }}</td>
                             <td><button type="button" class="btn btn-primary">Actualizar</button></td>
-                            <td><button type="button" class="btn btn-danger">Eliminar</button></td>
+                            <td>                            
+                                <form action="{{ route('hotel.destroy', ['id' => $hoteles->id]) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">
+                                    Eliminar
+                                </button>
+                            </form></td>
                         </tr>
                         @endforeach
                     </tbody>

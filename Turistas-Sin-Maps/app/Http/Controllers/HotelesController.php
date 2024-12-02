@@ -58,4 +58,11 @@ class HotelesController extends Controller
         $consultarHoteles = DB::table('hoteles')->get();
         return view('admin_hoteles', compact('consultarHoteles'));
     }
+    public function destroy(string $id)
+    {
+        DB::table('hoteles')->where('id', $id)->delete();
+        session()->flash('exito', 'El hotel ha sido eliminado');
+        return to_route('listarHoteles');
+    }
 }
+

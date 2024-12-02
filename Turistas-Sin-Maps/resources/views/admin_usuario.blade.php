@@ -117,7 +117,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($consultarUsuarios as $usuario)
+                        @foreach ($consultarUsuarios as $usuarios)
                         <tr>
                             <td>{{ $usuarios->id }}</td>
                             <td>{{ $usuarios->nombre }}</td>
@@ -125,7 +125,14 @@
                             <td>{{ $usuarios->telefono}}</td>
                             <td>{{ $usuarios->contraseña }}</td>
                             <td><button type="button" class="btn btn-primary">Actualizar</button></td>
-                            <td><button type="button" class="btn btn-danger">Eliminar</button></td>
+                            <td>
+                                <form action="{{ route('usuarios.destroy', ['id' => $usuarios->id]) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">
+                                        Eliminar
+                                    </button>
+                                </form></td>
                         </tr>
                         @endforeach
                     </tbody>

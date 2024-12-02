@@ -60,8 +60,11 @@ class Vuelos extends Controller
     /**
      * Remove the specified resource from storage.
      */
+
     public function destroy(string $id)
     {
-        //
+        DB::table('vuelos')->where('id', $id)->delete();
+        session()->flash('exito', 'El vuelo ha sido eliminado');
+        return to_route('listarVuelos');
     }
 }
