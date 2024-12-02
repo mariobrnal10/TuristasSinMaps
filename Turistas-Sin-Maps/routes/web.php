@@ -9,6 +9,12 @@ use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\ControladorRecuperacion;
 use App\Http\Controllers\HotelesController;
 use App\Http\Controllers\VuelosController;
+use App\Http\Controllers\Usuarios;
+use App\Http\Controllers\Vuelos;
+use App\Http\Controllers\Administradores;
+
+
+
 
 Route::get('/', [ControladorVistas::class, 'inicio'])->name('rutaInicio');
 Route::get('/registro', [controladorUsuarios::class, 'index'])->name('rutaRegistro');

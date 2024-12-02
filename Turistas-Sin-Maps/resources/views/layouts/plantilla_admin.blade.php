@@ -65,7 +65,7 @@
         <hr class="text-white">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a href="{{Route('listarHoteles')}}" class="nav-link"><i class="fas fa-hotel"></i> Hoteles</a>
+                <a href="" class="nav-link"><i class="fas fa-hotel"></i> Hoteles</a>
             </li>
             <li class="nav-item">
                 <a href="{{Route('listarVuelos')}}" class="nav-link"><i class="fas fa-plane"></i> Vuelos</a>
