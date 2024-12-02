@@ -68,4 +68,15 @@ class VuelosController extends Controller
 
         return response()->json($resultados);
     }
+    public function index()
+    {
+        $consultarVuelos = DB::table('vuelos')->get();
+        return view('admin_vuelos', compact('consultarVuelos'));
+    }
+    public function destroy(string $id)
+    {
+        DB::table('vuelos')->where('id', $id)->delete();
+        session()->flash('exito', 'El vuelo ha sido eliminado');
+        return to_route('listarVuelos');
+    }
 }

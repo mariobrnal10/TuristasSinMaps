@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\Validador;
+
 use Illuminate\Support\Facades\DB;
 
 class HotelesController extends Controller
@@ -52,4 +54,35 @@ class HotelesController extends Controller
 
         return response()->json($resultados);
     }
+    public function index()
+{
+    $consultarHoteles = DB::table('hoteles')->get();
+    return view('admin_hoteles', compact('consultarHoteles'));
+}
+
+public function destroy(string $id)
+{
+    DB::table('hoteles')->where('id', $id)->delete();
+    session()->flash('exito', 'El hotel ha sido eliminado');
+    return to_route('listarHoteles');
+}
+public function store(Validador $request)
+{
+    // Inserta los datos directamente en la tabla de administradores
+    DB::table('hoteles')->insert([
+        'nombre' => $request->input('nombre'),
+        'zona' => $request->input('zona'),
+        'num_habitaciones' => $request->input('habitaciones'),
+        'habitaciones_disponibles' => ($request->input('habitaciones_disp')),
+        'id_categoria' => $request->input('categoria'),
+        'precio_noche' => $request->input('tarifa'),
+
+
+
+    ]);
+
+    // Redirige a la vista de listar administradores con un mensaje de éxito
+    session()->flash('exito', 'El hotel ha sido registrado exitosamente.');
+    return redirect()->route('listarHoteles');
+}
 }

@@ -9,6 +9,8 @@ use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\ControladorRecuperacion;
 use App\Http\Controllers\HotelesController;
 use App\Http\Controllers\VuelosController;
+use App\Http\Controllers\Administradores;
+
 
 Route::get('/', [ControladorVistas::class, 'inicio'])->name('rutaInicio');
 Route::get('/registro', [controladorUsuarios::class, 'index'])->name('rutaRegistro');
@@ -91,4 +93,30 @@ Route::get('/administradores/agregar', [controladorVistas::class, 'admin_nuevo']
 Route::get('/PoliticaDePrivacidad', [ControladorVistas::class, 'Privacidad'])->name('rutaPrivacidad');
 
 
+
+//admins Alonso
+Route::post('/enviar-hotel', [HotelesController::class, 'guardarHotel'])->name('enviarHotel');
+Route::get('/lista/admins', [Administradores::class, 'index'])->name('listarAdmins');
+Route::delete('/cliente/{id}', [Administradores::class, 'destroy'])->name('cliente.destroy');
+Route::post('/administradores/{id}', [Administradores::class, 'update'])->name('actualizarAdmin');
+
+Route::post('/enviarRegistro', [Administradores::class, 'store'])->name('rutaRegistrar_admin');
+
+
+//hoteles
+Route::post('/agregar/hotel', [HotelesController::class, 'store'])->name('hoteles.create');
+Route::get('/lista/hoteles', [HotelesController::class, 'index'])->name('listarHoteles');
+Route::delete('/hotel/{id}', [HotelesController::class, 'destroy'])->name('hotel.destroy');
+
+//vuelos
+Route::get('/lista/vuelos', [VuelosController::class, 'index'])->name('listarVuelos');
+Route::delete('/vuelo/{id}', [VuelosController::class, 'destroy'])->name('vuelos.destroy');
+
+//usuarios
+Route::get('/lista/usuarios', [controladorUsuarios::class, 'listar'])->name('listarUsuarios');
+Route::delete('/usuarios/{id}', [controladorUsuariosUsuarios::class, 'destroy'])->name('usuarios.destroy');
+
+Route::get('/contacto', [controladorVistas::class, 'formContacto'])->name('rutaContacto');
+Route::get('/administradores/nuevo', [controladorVistas::class, 'admin_nuevo'])->name('administrador_nuevo');
+Route::get('/hotel/nuevo', [controladorVistas::class, 'hotel_nuevo'])->name('hotel_nuevo');
 

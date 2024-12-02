@@ -60,7 +60,7 @@ class ControladorVistas extends Controller
         return view('agregar_admin');
     }
     public function admin_nuevo(){
-        return view('formulario_administracion');
+        return view('registrar_admin');
     }
     public function formContacto(){
         return view ('contacto');
@@ -75,6 +75,9 @@ class ControladorVistas extends Controller
 
     public function verificacion(){
         return view('verificacion');
+    }
+    public function hotel_nuevo(){
+        return view('formulario_hoteles');
     }
 
     public function mostrarFormularioVerificarCodigo()
