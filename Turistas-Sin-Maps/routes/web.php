@@ -4,6 +4,11 @@ use App\Http\Controllers\controladorForms;
 use App\Http\Controllers\controladorUsuarios;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ControladorVistas;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CarritoController;
+use App\Http\Controllers\ControladorRecuperacion;
+use App\Http\Controllers\HotelesController;
+use App\Http\Controllers\VuelosController;
 
 Route::get('/', [ControladorVistas::class, 'inicio'])->name('rutaInicio');
 Route::get('/registro', [controladorUsuarios::class, 'index'])->name('rutaRegistro');
@@ -31,10 +36,6 @@ Route::post('/enviarRegistro', [controladorUsuarios::class, 'store'])->name('rut
 Route::post('/verificarCodigo', [controladorUsuarios::class, 'verificarCodigo'])->name('verificarCodigo');
 Route::get('/verificacion', [ControladorVistas::class, 'verificacion'])->name('rutaVerificacion');
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ControladorRecuperacion;
-use App\Http\Controllers\HotelesController;
-use App\Http\Controllers\VuelosController;
 
 // Ruta para el formulario de login
 Route::get('/login', [ControladorVistas::class, 'login'])->name('rutaLogin');
