@@ -133,11 +133,6 @@ class controladorUsuarios extends Controller
     // Si el código es incorrecto, regresar a la vista de verificación con un error
     return redirect()->back()->withErrors(['codigo' => 'El código ingresado es incorrecto.']);
 }
-public function listar()
-{
-    $consultarUsuarios = DB::table('usuarios')->get();
-    return view('admin_usuario', compact('consultarUsuarios'));
-}
 
 
 }
