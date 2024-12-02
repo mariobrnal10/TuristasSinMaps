@@ -19,7 +19,6 @@ use App\Http\Controllers\Administradores;
 Route::get('/', [ControladorVistas::class, 'inicio'])->name('rutaInicio');
 Route::get('/registro', [controladorUsuarios::class, 'index'])->name('rutaRegistro');
 Route::get('/home', [ControladorVistas::class, 'home'])->name('rutaHome');
-Route::get('/carrito', [ControladorVistas::class, 'carrito'])->name('rutaCarrito');
 Route::get('/usuario', [ControladorVistas::class, 'usuario'])->name('rutaUsuario');
 Route::get('/vuelos', [ControladorVistas::class, 'vuelos'])->name('rutaVuelos');
 Route::get('/busVuelo', [ControladorVistas::class, 'busqueda_Vuelos'])->name('rutaBVuelos');
@@ -107,7 +106,17 @@ Route::post('/hoteles/buscar', [HotelesController::class, 'buscarHoteles'])->nam
 //vuelos
 Route::post('/vuelos/buscar', [VuelosController::class, 'buscarVuelos'])->name('buscarVuelos');
 
+// Agregar un vuelo al carrito
+Route::post('/carrito/agregarVuelo', [CarritoController::class, 'agregarVuelo'])->name('carrito.agregarVuelo');
 
+// Agregar un hotel al carrito
+Route::post('/carrito/agregarHotel', [CarritoController::class, 'agregarHotel'])->name('carrito.agregarHotel');
+
+//Rutas del Carritos
+Route::get('/carrito', [CarritoController::class, 'listarCarrito'])->name('carrito.listar');
+Route::post('/carrito/actualizarCantidad', [CarritoController::class, 'actualizarCantidad'])->name('carrito.actualizarCantidad');
+Route::post('/carrito/eliminar', [CarritoController::class, 'eliminar'])->name('carrito.eliminar');
+Route::post('/carrito/pagar', [CarritoController::class, 'pagar'])->name('carrito.pagar');
 
 
 

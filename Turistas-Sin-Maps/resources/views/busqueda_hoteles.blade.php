@@ -66,30 +66,30 @@
                 <img src="img/10.png" alt="Buscar" class="mr-2" style="width: 20px; height: 20px;"> Buscar Hoteles
             </button>
         </form>
-        
     </div>
 
     <div class="mt-5" id="resultadosHoteles">
         <h3>Resultados de la búsqueda</h3>
         <div class="row" id="resultados">
-            <!-- Los resultados se insertarán dinámicamente aquí -->
+            <!-- Los resultados dinámicos se insertarán aquí -->
         </div>
     </div>
 </div>
 
 <script>
+    // Script para manejar la búsqueda de hoteles y reserva
     document.getElementById('formHoteles').addEventListener('submit', function (event) {
-    event.preventDefault();
+        event.preventDefault();
 
-    const formData = new FormData(this);
+        const formData = new FormData(this);
 
-    fetch("{{ route('buscarHoteles') }}", {
-        method: 'POST',
-        headers: {
-            'X-CSRF-TOKEN': '{{ csrf_token() }}',
-        },
-        body: formData,
-    })
+        fetch("{{ route('buscarHoteles') }}", {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+            },
+            body: formData,
+        })
         .then(response => response.json())
         .then(data => {
             const resultadosDiv = document.getElementById('resultados');
@@ -103,7 +103,6 @@
                         <div class="col-md-6 mb-4">
                             <div class="card h-100 shadow">
                                 <img src="${hotel.foto}" class="card-img-top" alt="${hotel.nombre}" width="200" height="250">
-
                                 <div class="card-body">
                                     <h5 class="card-title">${hotel.nombre}</h5>
                                     <p class="card-text">
@@ -111,7 +110,7 @@
                                         <strong>Precio por noche:</strong> MXN $${hotel.precio_noche}<br>
                                         <strong>Habitaciones disponibles:</strong> ${hotel.habitaciones_disponibles}
                                     </p>
-                                    <button class="btn btn-primary w-100">Reservar</button>
+                                    <button class="btn btn-primary w-100" onclick="reservarHotel(${hotel.id}, ${hotel.precio_noche})">Reservar</button>
                                 </div>
                             </div>
                         </div>
@@ -120,9 +119,30 @@
             }
         })
         .catch(error => console.error('Error:', error));
-});
+    });
 
-
+    // Función para manejar la reserva de hoteles
+    function reservarHotel(hotelId, precio) {
+        fetch("{{ route('carrito.agregarHotel') }}", {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                id_hotel: hotelId,
+                precio: precio,
+            }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message); // Mensaje de éxito
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
 </script>
 </body>
+
 @endsection

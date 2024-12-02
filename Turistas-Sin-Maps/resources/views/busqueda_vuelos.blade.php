@@ -54,7 +54,7 @@
                         </select>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block mt-4 d-flex align-items-center justify-content-center">
+                <button type="submit" class="btn btn-primary btn-block mt-4">
                     <img src="{{ asset('img/10.png') }}" alt="Buscar" class="mr-2" style="width: 20px; height: 20px;"> Buscar Vuelos
                 </button>
             </form>
@@ -62,83 +62,77 @@
 
         <div class="mt-5" id="resultadosVuelos">
             <h3>Resultados de la búsqueda</h3>
-            <div class="row" id="resultados">
-                <!-- Los resultados dinámicos se insertarán aquí -->
-                @if(isset($resultados) && count($resultados) > 0)
-                    @foreach($resultados as $vuelo)
-                    <div class="col-md-6 mb-4">
-                        <div class="card h-100 shadow">
-                            <img src="{{ asset('img/aero.jpg') }}" class="card-img-top" alt="{{ $vuelo->aerolinea }}">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $vuelo->aerolinea }}</h5>
-                                <p class="card-text">
-                                    <strong>Clase:</strong> {{ $vuelo->nombre_clase }}<br>
-                                    <strong>Origen:</strong> {{ $vuelo->origen }}<br>
-                                    <strong>Destino:</strong> {{ $vuelo->destino }}<br>
-                                    <strong>Precio:</strong> MXN ${{ number_format($vuelo->precio, 2) }}<br>
-                                    <strong>Fecha Salida:</strong> {{ $vuelo->fecha_salida }}<br>
-                                    <strong>Fecha Llegada:</strong> {{ $vuelo->fecha_llegada }}
-                                </p>
-                                <button class="btn btn-primary w-100">Reservar vuelo</button>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                @else
-                    <p class="text-center">No se encontraron vuelos que coincidan con los criterios de búsqueda.</p>
-                @endif
-            </div>
+            <div class="row" id="resultados"></div>
         </div>
     </div>
 
     <script>
-        document.getElementById('formVuelos').addEventListener('submit', function (event) {
+        document.getElementById('formVuelos').addEventListener('submit', function(event) {
             event.preventDefault();
-    
+
             const formData = new FormData(this);
-    
+
             fetch("{{ route('buscarVuelos') }}", {
-    method: 'POST',
-    headers: {
-        'X-CSRF-TOKEN': '{{ csrf_token() }}',
-    },
-    body: formData,
-})
-.then(response => response.json()) // Aquí aseguramos que la respuesta sea JSON
-.then(data => {
-    const resultadosDiv = document.getElementById('resultados');
-    resultadosDiv.innerHTML = ''; // Limpiar resultados anteriores
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                },
+                body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                const resultadosDiv = document.getElementById('resultados');
+                resultadosDiv.innerHTML = '';
 
-    if (data.length === 0) {
-        resultadosDiv.innerHTML = '<p class="text-center">No se encontraron vuelos que coincidan con los criterios de búsqueda.</p>';
-    } else {
-        data.forEach(vuelo => {
-            resultadosDiv.innerHTML += `
-                <div class="col-md-6 mb-4">
-                    <div class="card h-100 shadow">
-                        <img src="{{ asset('img/aero.jpg') }}" class="card-img-top" alt="${vuelo.aerolinea}">
-                        <div class="card-body">
-                            <h5 class="card-title">${vuelo.aerolinea}</h5>
-                            <p class="card-text">
-                                <strong>Clase:</strong> ${vuelo.nombre_clase}<br>
-                                <strong>Origen:</strong> ${vuelo.origen}<br>
-                                <strong>Destino:</strong> ${vuelo.destino}<br>
-                                <strong>Precio:</strong> MXN $${vuelo.precio}<br>
-                                <strong>Fecha Salida:</strong> ${vuelo.fecha_salida}<br>
-                                <strong>Fecha Llegada:</strong> ${vuelo.fecha_llegada}
-                            </p>
-                            <button class="btn btn-primary w-100">Reservar vuelo</button>
-                        </div>
-                    </div>
-                </div>
-            `;
+                if (data.length === 0) {
+                    resultadosDiv.innerHTML = '<p class="text-center">No se encontraron vuelos que coincidan con los criterios de búsqueda.</p>';
+                } else {
+                    data.forEach(vuelo => {
+                        resultadosDiv.innerHTML += `
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100 shadow">
+                                    <img src="{{ asset('img/aero.jpg') }}" class="card-img-top" alt="${vuelo.aerolinea}">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${vuelo.aerolinea}</h5>
+                                        <p class="card-text">
+                                            <strong>Clase:</strong> ${vuelo.nombre_clase}<br>
+                                            <strong>Origen:</strong> ${vuelo.origen}<br>
+                                            <strong>Destino:</strong> ${vuelo.destino}<br>
+                                            <strong>Precio:</strong> MXN $${vuelo.precio}<br>
+                                            <strong>Fecha Salida:</strong> ${vuelo.fecha_salida}<br>
+                                            <strong>Fecha Llegada:</strong> ${vuelo.fecha_llegada}
+                                        </p>
+                                        <button class="btn btn-primary w-100" onclick="reservarVuelo(${vuelo.id}, ${vuelo.precio})">Reservar vuelo</button>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                }
+            })
+            .catch(error => console.error('Error:', error));
         });
-    }
-})
-.catch(error => console.error('Error:', error));
 
+        function reservarVuelo(vueloId, precio) {
+            fetch("{{ route('carrito.agregarVuelo') }}", {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    id_vuelo: vueloId,
+                    precio: precio,
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
     </script>
-    
 </body>
-
 @endsection
